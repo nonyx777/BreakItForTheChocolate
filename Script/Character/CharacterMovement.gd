@@ -8,7 +8,9 @@ var directions: NDArray = nd.array([[0, 0, 1], [-1, 0, 0], [0, 0, -1], [1, 0, 0]
 var key_direction: Vector3
 
 # Linear Movement
-@export var force: float = 20
+@export var force: float = 30
+@export var gravity: float = 13
+@export var jump_velocity: float = 5 
 var acceleration: Vector3
 var prev_acceleration: Vector3
 var velocity: Vector3
@@ -52,10 +54,19 @@ func movementOrientation(delta: float) -> void:
 	force_vec = Vector3(sin(target_angle), 0.0, cos(target_angle))
 
 func movement(delta: float) -> void:
+	if not characterBody.is_on_floor():
+		velocity.y -= gravity * delta
+	else:
+		velocity.y *= 0.0
+		
 	acceleration *= 0.0
 	acceleration = force_vec * force
 	velocity += acceleration * delta
-	velocity *= drag
+	velocity.x *= drag
+	velocity.z *= drag
+	
+	if characterBody.is_on_floor() and Input.is_action_just_pressed("Jump"):
+		velocity.y = jump_velocity
 
 func tilt(delta: float) -> void:
 	# cross product between local y and acceleraction vector
@@ -72,7 +83,7 @@ func tilt(delta: float) -> void:
 func _ready() -> void:
 	pass
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	process_input()
 	movementOrientation(delta)
 	movement(delta)
