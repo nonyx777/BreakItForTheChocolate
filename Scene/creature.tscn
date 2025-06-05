@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dnmjobri3cbls"]
+[gd_scene load_steps=8 format=3 uid="uid://dnmjobri3cbls"]
 
 [ext_resource type="Script" uid="uid://dyviamaunmpfv" path="res://Script/Character/CharacterMovement.gd" id="1_g76dh"]
 
@@ -13,8 +13,18 @@ albedo_color = Color(0.992754, 0, 0.109375, 1)
 material = SubResource("StandardMaterial3D_pq5cv")
 size = Vector3(0.5, 0.2, 0.5)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_g76dh"]
+size = Vector3(10, 1, 10)
+
+[sub_resource type="BoxMesh" id="BoxMesh_g76dh"]
+size = Vector3(10, 1, 10)
+
 [node name="Creature" type="Node3D"]
 script = ExtResource("1_g76dh")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
 
@@ -30,3 +40,12 @@ mesh = SubResource("BoxMesh_7gdwu")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.735541, -0.345353, 0.582848, 0, 0.860317, 0.50976, -0.677481, -0.374949, 0.632798, 9.31629, 8.14805, 10.1147)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.56936, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_g76dh")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("BoxMesh_g76dh")
