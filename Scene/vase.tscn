@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://nvb476gndsav"]
+
+[ext_resource type="Script" uid="uid://beamsissw7bj2" path="res://Script/DestructibleObjects/destroyvase.gd" id="1_u2ity"]
+[ext_resource type="ArrayMesh" uid="uid://b65xcga55m6fu" path="res://Model/Vase/Vase.res" id="1_w2uwf"]
+[ext_resource type="Script" uid="uid://didj56d251v1j" path="res://addons/smash_the_mesh/stm_cached_instance.gd" id="2_u2ity"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u2ity"]
+size = Vector3(0.74, 0.92, 0.74)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dlx4k"]
+albedo_color = Color(0.229853, 0.105638, 0.00249219, 1)
+
+[node name="Vase" type="Node3D"]
+script = ExtResource("1_u2ity")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("BoxShape3D_u2ity")
+
+[node name="STMCachedInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
+mesh = ExtResource("1_w2uwf")
+skeleton = NodePath("../..")
+script = ExtResource("2_u2ity")
+cache_is_saved = true
+cache_name = "8248333786208"
+original_mesh = ExtResource("1_w2uwf")
+chunk_inner_material = SubResource("StandardMaterial3D_dlx4k")
+metadata/_custom_type_script = "uid://didj56d251v1j"
