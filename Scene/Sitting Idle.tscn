@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://ddbfrxnfs42bk"]
+[gd_scene load_steps=31 format=4 uid="uid://ddbfrxnfs42bk"]
 
 [ext_resource type="Texture2D" uid="uid://bvldfcjj68fe3" path="res://Model/Sitting Idle_0.png" id="1_pocn0"]
 [ext_resource type="Script" uid="uid://cq38foqsrtlrc" path="res://Script/Man/DetectCreature.gd" id="1_tivjr"]
@@ -871,6 +871,12 @@ size = Vector3(0.05, 0.05, 0.5)
 
 [sub_resource type="BoxMesh" id="BoxMesh_tbyll"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_tbyll"]
+size = Vector3(10, 1, 10)
+
+[sub_resource type="BoxMesh" id="BoxMesh_pr4eb"]
+size = Vector3(10, 1, 10)
+
 [node name="Sitting Idle" type="Node3D" node_paths=PackedStringArray("creature", "eye", "sight1", "sight2", "sight3")]
 script = ExtResource("1_tivjr")
 creature = NodePath("CharacterBody3D")
@@ -878,6 +884,10 @@ eye = NodePath("Eye")
 sight1 = NodePath("CharacterBody3D/Sight1")
 sight2 = NodePath("CharacterBody3D/Sight2")
 sight3 = NodePath("CharacterBody3D/Sight3")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
 
 [node name="mixamorig_Meshes" type="Node3D" parent="."]
 
@@ -1405,6 +1415,7 @@ skin = SubResource("Skin_kcibu")
 
 [node name="HeadLookAt" type="LookAtModifier3D" parent="Skeleton3D"]
 active = false
+target_node = NodePath("../../CharacterBody3D")
 bone_name = "mixamorig_Head"
 bone = 6
 use_angle_limitation = true
@@ -1417,6 +1428,7 @@ secondary_damp_threshold = 1.0
 [node name="SpineLookAt" type="LookAtModifier3D" parent="Skeleton3D"]
 active = false
 influence = 0.4
+target_node = NodePath("../../CharacterBody3D")
 bone_name = "mixamorig_Spine1"
 bone = 2
 use_angle_limitation = true
@@ -1466,3 +1478,26 @@ shape = SubResource("BoxShape3D_tivjr")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
 mesh = SubResource("BoxMesh_tbyll")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.59294, 1.57676, -1.5719)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
+shape = SubResource("BoxShape3D_tivjr")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D2"]
+mesh = SubResource("BoxMesh_tbyll")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.782609, -0.235714, 0.576162, 0, 0.92554, 0.378649, -0.622514, -0.296334, 0.724336, 2.14626, 2.46372, 2.69822)
+
+[node name="ObjectBroken" type="Node3D" parent="."]
+
+[node name="Ground" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+shape = SubResource("BoxShape3D_tbyll")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+mesh = SubResource("BoxMesh_pr4eb")
