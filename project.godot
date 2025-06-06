@@ -15,6 +15,10 @@ run/main_scene="uid://ddbfrxnfs42bk"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/smash_the_mesh/plugin.cfg")
+
 [input]
 
 Forward={
