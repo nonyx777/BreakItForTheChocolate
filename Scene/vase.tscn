@@ -14,7 +14,7 @@ albedo_color = Color(0.229853, 0.105638, 0.00249219, 1)
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
 collision_layer = 2
-collision_mask = 3
+collision_mask = 7
 script = ExtResource("1_u2ity")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]

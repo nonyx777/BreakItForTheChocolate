@@ -41,6 +41,7 @@ transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75
 shadow_enabled = true
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+collision_mask = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
 shape = SubResource("CapsuleShape3D_vga3i")
@@ -57,7 +58,7 @@ transform = Transform3D(0.735541, -0.345353, 0.582848, 0, 0.860317, 0.50976, -0.
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.56936, 0)
-collision_layer = 3
+collision_layer = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("BoxShape3D_g76dh")

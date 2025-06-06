@@ -205,6 +205,7 @@ shape = SubResource("BoxShape3D_du5de")
 
 [node name="Ground" type="StaticBody3D" parent="Static Objects"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.464688, 0)
+collision_layer = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Static Objects/Ground"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)

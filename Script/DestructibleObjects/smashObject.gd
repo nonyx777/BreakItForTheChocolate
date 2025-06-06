@@ -20,13 +20,11 @@ func smash() -> void:
 	# Apply the callback to each chunk of the mesh
 	stm_instance.chunks_iterate(explode_callback)
 
-
-
 func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	for i in state.get_contact_count():
 		var collider = state.get_contact_collider_object(i)
 		if collider and collider is CollisionObject3D:
-			if (collider.collision_layer & (1 << 1)) != 0:  # Layer 2 = bit index 1
+			if (collider.collision_layer & (1 << 2)) != 0:  # Layer 3
 				if smash_once:
 					smash()
 					smash_once = false
