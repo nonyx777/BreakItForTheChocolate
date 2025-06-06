@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://d1tsvj4p84e7a"]
 
 [ext_resource type="ArrayMesh" uid="uid://cndtkbf772gws" path="res://Model/Bottle/Bottle.res" id="1_r7r8r"]
-[ext_resource type="Script" uid="uid://cjq24hd2qhs8x" path="res://Script/DestructibleObjects/destroybottle.gd" id="1_te607"]
+[ext_resource type="Script" uid="uid://beamsissw7bj2" path="res://Script/DestructibleObjects/smashObject.gd" id="1_te607"]
 [ext_resource type="Script" uid="uid://didj56d251v1j" path="res://addons/smash_the_mesh/stm_cached_instance.gd" id="1_y6k8q"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_te607"]
@@ -13,10 +13,11 @@ metallic = 0.33
 roughness = 0.03
 
 [node name="Bottle" type="Node3D"]
-script = ExtResource("1_te607")
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
 collision_layer = 2
+collision_mask = 3
+script = ExtResource("1_te607")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
 shape = SubResource("BoxShape3D_te607")
@@ -26,6 +27,7 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -0.
 mesh = ExtResource("1_r7r8r")
 skeleton = NodePath("../..")
 script = ExtResource("1_y6k8q")
+cache_is_saved = true
 cache_name = "18624957991846"
 original_mesh = ExtResource("1_r7r8r")
 chunk_inner_material = SubResource("StandardMaterial3D_r7r8r")

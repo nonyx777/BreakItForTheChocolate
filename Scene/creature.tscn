@@ -1,6 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://dnmjobri3cbls"]
+[gd_scene load_steps=14 format=3 uid="uid://dnmjobri3cbls"]
 
 [ext_resource type="Script" uid="uid://dyviamaunmpfv" path="res://Script/Character/CharacterMovement.gd" id="1_g76dh"]
+[ext_resource type="PackedScene" uid="uid://d1tsvj4p84e7a" path="res://Scene/bottle.tscn" id="2_7gdwu"]
+[ext_resource type="PackedScene" uid="uid://nvb476gndsav" path="res://Scene/vase.tscn" id="3_fcvaw"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vga3i"]
 
@@ -14,10 +16,22 @@ material = SubResource("StandardMaterial3D_pq5cv")
 size = Vector3(0.5, 0.2, 0.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_g76dh"]
-size = Vector3(10, 1, 10)
+size = Vector3(20, 1, 20)
 
 [sub_resource type="BoxMesh" id="BoxMesh_g76dh"]
-size = Vector3(10, 1, 10)
+size = Vector3(20, 1, 20)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7gdwu"]
+size = Vector3(3, 2, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_fcvaw"]
+size = Vector3(3, 2, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fcvaw"]
+size = Vector3(3, 1, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_xe3iw"]
+size = Vector3(3, 1, 2)
 
 [node name="Creature" type="Node3D"]
 script = ExtResource("1_g76dh")
@@ -43,9 +57,34 @@ transform = Transform3D(0.735541, -0.345353, 0.582848, 0, 0.860317, 0.50976, -0.
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.56936, 0)
+collision_layer = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("BoxShape3D_g76dh")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
 mesh = SubResource("BoxMesh_g76dh")
+
+[node name="Bottle" parent="." instance=ExtResource("2_7gdwu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.900486, 1.57761, 3.93314)
+
+[node name="Table" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00630999, -0.102964, 3.57593)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Table"]
+shape = SubResource("BoxShape3D_7gdwu")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Table"]
+mesh = SubResource("BoxMesh_fcvaw")
+
+[node name="Table2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00630999, -0.54914, 5.68625)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Table2"]
+shape = SubResource("BoxShape3D_fcvaw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Table2"]
+mesh = SubResource("BoxMesh_xe3iw")
+
+[node name="Vase" parent="." instance=ExtResource("3_fcvaw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.830885, 1.3722, 3.57328)
