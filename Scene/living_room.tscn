@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bvgn4bekndct3"]
+[gd_scene load_steps=28 format=3 uid="uid://bvgn4bekndct3"]
 
 [ext_resource type="PackedScene" uid="uid://fqt80yg3gt7" path="res://Model/Sitting Idle.fbx" id="1_wf5b4"]
 [ext_resource type="ArrayMesh" uid="uid://cw4lceex74ghq" path="res://Model/Door/door_main.res" id="2_hl2wn"]
@@ -8,7 +8,9 @@
 [ext_resource type="ArrayMesh" uid="uid://4k748afgbwn5" path="res://Model/Desk/Desk.res" id="6_0c3fy"]
 [ext_resource type="ArrayMesh" uid="uid://dvixfsjhuydnc" path="res://Model/Table/Table.res" id="7_ele34"]
 [ext_resource type="ArrayMesh" uid="uid://be2fygj5bkvo6" path="res://Model/Curtain/Curtain/curtain.obj" id="8_ktxfw"]
+[ext_resource type="Material" uid="uid://brnrqc6sie6wr" path="res://Material/FloorMaterial.tres" id="9_44gdo"]
 [ext_resource type="PackedScene" uid="uid://s2x48dejk4ba" path="res://Model/TV/model.tscn" id="9_du5de"]
+[ext_resource type="Material" uid="uid://3jj0u8d4u775" path="res://Material/WallMaterial.tres" id="10_vitcg"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_du5de"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -48,12 +50,14 @@ size = Vector3(1.095, 0.8, 0.77)
 size = Vector3(10, 0.1, 10)
 
 [sub_resource type="BoxMesh" id="BoxMesh_wf5b4"]
+material = ExtResource("9_44gdo")
 size = Vector3(10, 0.1, 10)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lcyxa"]
 size = Vector3(3.751, 0.1, 10)
 
 [sub_resource type="BoxMesh" id="BoxMesh_44gdo"]
+material = ExtResource("10_vitcg")
 size = Vector3(3.715, 0.1, 10)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ele34"]
@@ -75,7 +79,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0119529, 0.00209167, 2.549
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.707107, -0.331967, 0.624338, 0, 0.882948, 0.469472, -0.707107, -0.331967, 0.624338, 27.2956, 22.7894, 27.2956)
 projection = 1
-size = 10.5
+size = 13.4
 
 [node name="Static Objects" type="Node3D" parent="."]
 
@@ -291,7 +295,7 @@ light_bake_mode = 1
 
 [node name="OmniLight3D9" type="OmniLight3D" parent="Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.78709, 2.7732, -2.96118)
-light_energy = 5.103
+light_energy = 3.178
 light_bake_mode = 1
 shadow_enabled = true
 
