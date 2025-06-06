@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="BreakItForTheChocolate"
-run/main_scene="uid://ddbfrxnfs42bk"
+run/main_scene="uid://dnmjobri3cbls"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
