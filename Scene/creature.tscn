@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://dnmjobri3cbls"]
+[gd_scene load_steps=5 format=3 uid="uid://dnmjobri3cbls"]
 
 [ext_resource type="Script" uid="uid://dyviamaunmpfv" path="res://Script/Character/CharacterMovement.gd" id="1_g76dh"]
+[ext_resource type="ArrayMesh" uid="uid://6k8uwjxj2tk2" path="res://Model/Mask/Mask.res" id="2_pq5cv"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vga3i"]
 radius = 0.2
@@ -9,13 +10,6 @@ height = 0.7
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_g76dh"]
 radius = 0.2
 height = 0.7
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pq5cv"]
-albedo_color = Color(0.992754, 0, 0.109375, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_7gdwu"]
-material = SubResource("StandardMaterial3D_pq5cv")
-size = Vector3(0.167, 0.067, 0.167)
 
 [node name="Creature" type="Node3D"]
 script = ExtResource("1_g76dh")
@@ -29,9 +23,9 @@ shape = SubResource("CapsuleShape3D_vga3i")
 [node name="Body" type="MeshInstance3D" parent="CharacterBody3D"]
 mesh = SubResource("CapsuleMesh_g76dh")
 
-[node name="Eyes" type="MeshInstance3D" parent="CharacterBody3D/Body"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.183236, 0.124505)
-mesh = SubResource("BoxMesh_7gdwu")
+[node name="Face" type="MeshInstance3D" parent="CharacterBody3D/Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.157878, 0.196649)
+mesh = ExtResource("2_pq5cv")
 
 [node name="SightTarget1" type="Node3D" parent="CharacterBody3D"]
 
