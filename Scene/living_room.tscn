@@ -341,13 +341,13 @@ skeleton = NodePath("../../..")
 [node name="BreakableObjects" type="Node3D" parent="."]
 
 [node name="Bottle" parent="BreakableObjects" instance=ExtResource("12_kiqjd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.028337, 1.23543, 0.0416341)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.04072, 1.23931, -2.5541)
 
 [node name="Bottle2" parent="BreakableObjects" instance=ExtResource("12_kiqjd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.81665, 2.11374, 1.09678)
 
 [node name="Bottle4" parent="BreakableObjects" instance=ExtResource("12_kiqjd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.494852, 1.23543, -0.06107)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.51841, 2.11374, -0.00896786)
 
 [node name="Vase" parent="BreakableObjects" instance=ExtResource("13_pbccy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.04523, 2.00464, -3.81458)
@@ -356,7 +356,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.04523, 2.00464, -3.81458)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.75538, 2.01963, -0.431788)
 
 [node name="JamJar" parent="BreakableObjects" instance=ExtResource("17_jcx0t")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.97946, 1.78499, 0.296226)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.132392, 0.906676, 0.0634289)
 
 [node name="GlassJar" parent="BreakableObjects" instance=ExtResource("18_uo1dq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0261392, 1.92636, -4.48533)
