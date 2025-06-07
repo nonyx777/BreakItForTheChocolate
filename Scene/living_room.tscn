@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://bvgn4bekndct3"]
+[gd_scene load_steps=35 format=3 uid="uid://bvgn4bekndct3"]
 
 [ext_resource type="ArrayMesh" uid="uid://cw4lceex74ghq" path="res://Model/Door/door_main.res" id="2_hl2wn"]
 [ext_resource type="ArrayMesh" uid="uid://cpunqnkefu5db" path="res://Model/Sofa/sofa.res" id="3_uphb1"]
@@ -71,6 +71,68 @@ metallic_specular = 0.0
 [sub_resource type="PlaneMesh" id="PlaneMesh_ktxfw"]
 material = SubResource("StandardMaterial3D_ele34")
 size = Vector2(4, 4)
+
+[sub_resource type="Animation" id="Animation_jvgng"]
+resource_name = "flicker"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:light_energy")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.84, 1, 1.33, 1.68, 2.2, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [5.691, 1.443, 2.434, 1.301, 3.283, 1.725, 0.875, 5.691]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:light_color")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.19, 0.32, 0.59, 0.77, 1, 1.11, 1.26667, 1.56667, 2, 2.4, 2.96667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0.871686, 0.900166, 1), Color(0.62523, 0.81651, 0.744863, 1), Color(0.670177, 0.814359, 0.584494, 1), Color(0.952038, 0.638179, 0.620095, 1), Color(0.512158, 0.785208, 0.618637, 1), Color(0.200721, 0.4637, 0.378246, 1), Color(0.72169, 0.665295, 0.387723, 1), Color(0.443193, 0.707637, 0.783284, 1), Color(0.447955, 0.766382, 0.411461, 1), Color(0.928964, 0.97047, 0.988157, 1), Color(0.506488, 0.416882, 0.482863, 1), Color(0, 0.871686, 0.900166, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_2wob0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [5.691]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:light_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0.871686, 0.900166, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jcx0t"]
+_data = {
+&"RESET": SubResource("Animation_2wob0"),
+&"flicker": SubResource("Animation_jvgng")
+}
 
 [node name="LivingRoom" type="Node3D"]
 
@@ -333,6 +395,12 @@ light_energy = 3.178
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.15377, 4.08938)
 light_color = Color(0, 0.871686, 0.900166, 1)
 light_energy = 5.691
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Lights/SpotLight3D"]
+libraries = {
+&"": SubResource("AnimationLibrary_jcx0t")
+}
+autoplay = "flicker"
 
 [node name="Creature" parent="." instance=ExtResource("14_pbccy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.95658, 0.364688, 4.33805)

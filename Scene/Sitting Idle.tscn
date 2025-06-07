@@ -1426,6 +1426,7 @@ secondary_damp_threshold = 1.0
 libraries = {
 &"": SubResource("AnimationLibrary_45ewc")
 }
+autoplay = "mixamo_com"
 
 [node name="Eye" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00782037, 1.4404, 0.117767)
