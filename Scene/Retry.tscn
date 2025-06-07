@@ -103,6 +103,6 @@ text = "Died for a chocolate
 (Don't forget to hide after smashing an object)"
 horizontal_alignment = 1
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Retry" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Retry" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Retry" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
