@@ -1,0 +1,124 @@
+[gd_scene load_steps=8 format=3 uid="uid://b10gkab4uwnxi"]
+
+[ext_resource type="Script" uid="uid://bnmi3ocyjp0uv" path="res://Script/menu.gd" id="1_b23qx"]
+[ext_resource type="FontFile" uid="uid://blebthe1oril" path="res://Font/Smashers.ttf" id="2_eas8t"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ffxp3"]
+bg_color = Color(0.560453, 0.243935, 0.102892, 1)
+skew = Vector2(-0.88, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_alu6o"]
+bg_color = Color(0.90939, 0.90939, 0.90939, 1)
+skew = Vector2(0.88, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eas8t"]
+bg_color = Color(0.560453, 0.243935, 0.102892, 1)
+shadow_size = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u2k45"]
+bg_color = Color(0.560453, 0.243935, 0.102892, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b23qx"]
+bg_color = Color(1, 1, 1, 1)
+shadow_size = 5
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_b23qx")
+
+[node name="Panel2" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ffxp3")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_alu6o")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -127.0
+offset_top = -33.0
+offset_right = 127.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Play" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_eas8t")
+theme_override_styles/hover = SubResource("StyleBoxFlat_eas8t")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_u2k45")
+theme_override_styles/normal = SubResource("StyleBoxFlat_b23qx")
+text = "Play"
+
+[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_eas8t")
+theme_override_styles/hover = SubResource("StyleBoxFlat_eas8t")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_u2k45")
+theme_override_styles/normal = SubResource("StyleBoxFlat_b23qx")
+text = "Quit"
+
+[node name="Hint" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -194.0
+offset_top = -23.0
+offset_right = 194.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.98878, 0.863157, 0.801847, 1)
+theme_override_fonts/font = ExtResource("2_eas8t")
+text = "Smash every smashable object and scare the man
+to get your chocolate"
+horizontal_alignment = 1
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -192.5
+offset_top = 132.0
+offset_right = 192.5
+offset_bottom = 181.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.98878, 0.863157, 0.801847, 1)
+theme_override_fonts/font = ExtResource("2_eas8t")
+theme_override_font_sizes/font_size = 30
+text = "Break It For A Chocolate"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
