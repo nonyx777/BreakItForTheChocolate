@@ -7,6 +7,7 @@ extends RigidBody3D
 var smash_once: bool = true
 
 func _ready():
+	print()
 	contact_monitor = true
 	max_contacts_reported = 50
 

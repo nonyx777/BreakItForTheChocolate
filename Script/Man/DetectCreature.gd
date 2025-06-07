@@ -16,6 +16,7 @@ extends Node3D
 @export var turn_speed_towards_creature: float = 4.0
 @export var turn_speed_back: float = 2.0
 @export var time_until_turn_back: float = 3.0
+@export var time_until_restart: float = 2.0
 @export var signalManager: Node3D
 
 var creature_is_visible: bool = false
@@ -36,11 +37,9 @@ func isCreatureVisible(target: Node3D) -> bool:
 		return false
 
 func detectCreature() -> void:
-	var visible1: bool = isCreatureVisible(sight1)
-	var visible2: bool = isCreatureVisible(sight2)
-	var visible3: bool = isCreatureVisible(sight3)
-	if visible1 or visible2 or visible3:
-		creature_is_visible = true # Will make this trigger a signal
+	if isCreatureVisible(sight1) or isCreatureVisible(sight2) or isCreatureVisible(sight3):
+		creature_is_visible = true
+		restartGame()
 	if not creature_is_visible:
 		await get_tree().create_timer(time_until_turn_back).timeout
 		has_turned = false
@@ -50,7 +49,7 @@ func turnAndCheck(delta: float) -> void:
 	head.influence = lerp(head.influence, max_head_influence, weight)
 	spine.influence = lerp(spine.influence, max_spine_influence, weight)
 	
-	if head.influence >= max_head_influence - 0.1 or spine.influence >= max_spine_influence - 0.1:
+	if head.influence >= max_head_influence - 0.01 or spine.influence >= max_spine_influence - 0.01:
 		detectCreature()
 
 func turnBackToNormal(delta: float) -> void:
@@ -60,6 +59,9 @@ func turnBackToNormal(delta: float) -> void:
 
 func onObjectBroke() -> void:
 	has_turned = true
+
+func restartGame():
+	get_tree().change_scene_to_file("res://Scene/Retry.tscn")
 
 func _ready() -> void:
 	signalManager.connect("object_broken", onObjectBroke)

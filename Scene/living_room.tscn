@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://bvgn4bekndct3"]
+[gd_scene load_steps=40 format=3 uid="uid://bvgn4bekndct3"]
 
 [ext_resource type="ArrayMesh" uid="uid://cw4lceex74ghq" path="res://Model/Door/door_main.res" id="2_hl2wn"]
 [ext_resource type="ArrayMesh" uid="uid://cpunqnkefu5db" path="res://Model/Sofa/sofa.res" id="3_uphb1"]
@@ -15,6 +15,11 @@
 [ext_resource type="PackedScene" uid="uid://ddbfrxnfs42bk" path="res://Scene/Sitting Idle.tscn" id="14_jvgng"]
 [ext_resource type="PackedScene" uid="uid://dnmjobri3cbls" path="res://Scene/creature.tscn" id="14_pbccy"]
 [ext_resource type="Script" uid="uid://cftdbxt5oa68w" path="res://Script/signal_manager.gd" id="15_jvgng"]
+[ext_resource type="ArrayMesh" uid="uid://buupb8ga4wa2s" path="res://Model/Shotgun/Shotgun.res" id="16_2wob0"]
+[ext_resource type="PackedScene" uid="uid://br6yjdlgki8ag" path="res://Scene/jamjar.tscn" id="17_jcx0t"]
+[ext_resource type="PackedScene" uid="uid://wv64ymw8lb21" path="res://Scene/glassjar.tscn" id="18_uo1dq"]
+[ext_resource type="PackedScene" uid="uid://dt7t1bpbo6aal" path="res://Scene/vase2.tscn" id="19_ko103"]
+[ext_resource type="PackedScene" uid="uid://bgm18pe1vlg7k" path="res://Scene/longvase.tscn" id="20_rta4t"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_du5de"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -72,6 +77,33 @@ metallic_specular = 0.0
 material = SubResource("StandardMaterial3D_ele34")
 size = Vector2(4, 4)
 
+[sub_resource type="Animation" id="Animation_2wob0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [5.691]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:light_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0.871686, 0.900166, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_jvgng"]
 resource_name = "flicker"
 length = 3.0
@@ -99,33 +131,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [Color(0, 0.871686, 0.900166, 1), Color(0.62523, 0.81651, 0.744863, 1), Color(0.670177, 0.814359, 0.584494, 1), Color(0.952038, 0.638179, 0.620095, 1), Color(0.512158, 0.785208, 0.618637, 1), Color(0.200721, 0.4637, 0.378246, 1), Color(0.72169, 0.665295, 0.387723, 1), Color(0.443193, 0.707637, 0.783284, 1), Color(0.447955, 0.766382, 0.411461, 1), Color(0.928964, 0.97047, 0.988157, 1), Color(0.506488, 0.416882, 0.482863, 1), Color(0, 0.871686, 0.900166, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_2wob0"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:light_energy")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [5.691]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:light_color")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0, 0.871686, 0.900166, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jcx0t"]
@@ -185,6 +190,16 @@ transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.7422
 shape = SubResource("BoxShape3D_gdjtg")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Static Objects/NightStand2"]
+transform = Transform3D(150, 0, 0, 0, 150, 0, 0, 0, 150, 0, 0.005, -0.435)
+mesh = ExtResource("4_1nji3")
+
+[node name="NightStand3" type="StaticBody3D" parent="Static Objects"]
+transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, 1.35835, 0.453198, 2.49051)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Static Objects/NightStand3"]
+shape = SubResource("BoxShape3D_gdjtg")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Static Objects/NightStand3"]
 transform = Transform3D(150, 0, 0, 0, 150, 0, 0, 0, 150, 0, 0.005, -0.435)
 mesh = ExtResource("4_1nji3")
 
@@ -331,26 +346,26 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.028337, 1.23543, 0.0416341
 [node name="Bottle2" parent="BreakableObjects" instance=ExtResource("12_kiqjd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.81665, 2.11374, 1.09678)
 
-[node name="Bottle3" parent="BreakableObjects" instance=ExtResource("12_kiqjd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.99519, 2.11374, 0.514184)
-
 [node name="Bottle4" parent="BreakableObjects" instance=ExtResource("12_kiqjd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.975272, 2.09875, -3.89736)
-
-[node name="Bottle5" parent="BreakableObjects" instance=ExtResource("12_kiqjd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.042566, 2.09875, -4.62011)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.494852, 1.23543, -0.06107)
 
 [node name="Vase" parent="BreakableObjects" instance=ExtResource("13_pbccy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.579794, 1.14132, 0.12052)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.04523, 2.00464, -3.81458)
 
 [node name="Vase2" parent="BreakableObjects" instance=ExtResource("13_pbccy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.75538, 2.01963, -0.431788)
 
-[node name="Vase3" parent="BreakableObjects" instance=ExtResource("13_pbccy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.82945, 2.00464, -3.76885)
+[node name="JamJar" parent="BreakableObjects" instance=ExtResource("17_jcx0t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.97946, 1.78499, 0.296226)
 
-[node name="Vase4" parent="BreakableObjects" instance=ExtResource("13_pbccy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.70068, 1.1452, -2.46381)
+[node name="GlassJar" parent="BreakableObjects" instance=ExtResource("18_uo1dq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0261392, 1.92636, -4.48533)
+
+[node name="Vase3" parent="BreakableObjects" instance=ExtResource("19_ko103")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.761663, 1.91737, -3.83297)
+
+[node name="LongVase" parent="BreakableObjects" instance=ExtResource("20_rta4t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.88896, 1.28488, -3.31817)
 
 [node name="Lights" type="Node3D" parent="."]
 
@@ -401,6 +416,10 @@ libraries = {
 &"": SubResource("AnimationLibrary_jcx0t")
 }
 autoplay = "flicker"
+
+[node name="Shotgun" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.0680242, 0.716401, -0.694364, 0.997005, 0.0744955, -0.0208125, 0.0368169, -0.693699, -0.719323, 1.45916, 0.792159, 2.66853)
+mesh = ExtResource("16_2wob0")
 
 [node name="Creature" parent="." instance=ExtResource("14_pbccy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.95658, 0.364688, 4.33805)

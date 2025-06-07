@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://didj56d251v1j" path="res://addons/smash_the_mesh/stm_cached_instance.gd" id="1_y6k8q"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_te607"]
-size = Vector3(0.46, 1.09, 0.46)
+size = Vector3(0.31, 1.06, 0.31)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r7r8r"]
 albedo_color = Color(0.201237, 0.370488, 0.168221, 1)
