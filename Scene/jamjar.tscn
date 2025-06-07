@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://br6yjdlgki8ag"]
+
+[ext_resource type="Script" uid="uid://beamsissw7bj2" path="res://Script/DestructibleObjects/smashObject.gd" id="1_amt6e"]
+[ext_resource type="Script" uid="uid://didj56d251v1j" path="res://addons/smash_the_mesh/stm_cached_instance.gd" id="2_c1ib6"]
+[ext_resource type="ArrayMesh" uid="uid://dfeit8plbffti" path="res://Model/JamJar/JamJar.res" id="2_esox6"]
+[ext_resource type="ArrayMesh" uid="uid://b65xcga55m6fu" path="res://Model/Vase/Vase.res" id="3_esox6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u2ity"]
+size = Vector3(0.385, 0.44, 0.385)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dlx4k"]
+albedo_color = Color(0.229853, 0.105638, 0.00249219, 1)
+
+[node name="JamJar" type="Node3D"]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("1_amt6e")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("BoxShape3D_u2ity")
+
+[node name="STMCachedInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
+mesh = ExtResource("2_esox6")
+skeleton = NodePath("../..")
+script = ExtResource("2_c1ib6")
+cache_name = "8248333786209"
+original_mesh = ExtResource("2_esox6")
+chunk_brush = ExtResource("3_esox6")
+chunk_inner_material = SubResource("StandardMaterial3D_dlx4k")
+phys_shape = 4
+metadata/_custom_type_script = "uid://didj56d251v1j"
