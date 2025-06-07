@@ -16,8 +16,8 @@ extends Node3D
 @export var turn_speed_towards_creature: float = 4.0
 @export var turn_speed_back: float = 2.0
 @export var time_until_turn_back: float = 3.0
+@export var signalManager: Node3D
 
-signal object_broken()
 var creature_is_visible: bool = false
 var has_turned: bool = false
 
@@ -62,7 +62,7 @@ func onObjectBroke() -> void:
 	has_turned = true
 
 func _ready() -> void:
-	object_broken.connect(onObjectBroke)
+	signalManager.connect("object_broken", onObjectBroke)
 	head.target_node = creature.get_path()
 	spine.target_node = creature.get_path()
 	
@@ -72,8 +72,6 @@ func _ready() -> void:
 	spine.active = true
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("Temporary"):
-		object_broken.emit()
 	if has_turned:
 		turnAndCheck(delta)
 	else:

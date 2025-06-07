@@ -2,6 +2,7 @@ extends RigidBody3D
 
 @onready var stm_instance = $STMCachedInstance3D
 @onready var collisionShape = $CollisionShape3D
+@onready var signalManager = get_parent().get_parent().get_parent().get_node("SignalManager")
 
 var smash_once: bool = true
 
@@ -20,6 +21,7 @@ func smash() -> void:
 		rb.call_deferred("apply_impulse", -rb.position.normalized() * Vector3(1, -1, 1) * 5.0)
 	# Apply the callback to each chunk of the mesh
 	stm_instance.chunks_iterate(explode_callback)
+	signalManager.emit_signal("object_broken")
 
 func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	for i in state.get_contact_count():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://bvgn4bekndct3"]
+[gd_scene load_steps=32 format=3 uid="uid://bvgn4bekndct3"]
 
 [ext_resource type="ArrayMesh" uid="uid://cw4lceex74ghq" path="res://Model/Door/door_main.res" id="2_hl2wn"]
 [ext_resource type="ArrayMesh" uid="uid://cpunqnkefu5db" path="res://Model/Sofa/sofa.res" id="3_uphb1"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://nvb476gndsav" path="res://Scene/vase.tscn" id="13_pbccy"]
 [ext_resource type="PackedScene" uid="uid://ddbfrxnfs42bk" path="res://Scene/Sitting Idle.tscn" id="14_jvgng"]
 [ext_resource type="PackedScene" uid="uid://dnmjobri3cbls" path="res://Scene/creature.tscn" id="14_pbccy"]
+[ext_resource type="Script" uid="uid://cftdbxt5oa68w" path="res://Script/signal_manager.gd" id="15_jvgng"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_du5de"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -336,5 +337,9 @@ light_energy = 5.691
 [node name="Creature" parent="." instance=ExtResource("14_pbccy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.95658, 0.364688, 4.33805)
 
-[node name="Sitting Idle" parent="." instance=ExtResource("14_jvgng")]
+[node name="Sitting Idle" parent="." node_paths=PackedStringArray("signalManager") instance=ExtResource("14_jvgng")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0282432, 0, 2.5373)
+signalManager = NodePath("../SignalManager")
+
+[node name="SignalManager" type="Node3D" parent="."]
+script = ExtResource("15_jvgng")
