@@ -21,6 +21,7 @@ extends Node3D
 
 var creature_is_visible: bool = false
 var has_turned: bool = false
+var restarting: bool = false
 
 func isCreatureVisible(target: Node3D) -> bool:
 	var space_state = get_world_3d().direct_space_state
@@ -61,6 +62,12 @@ func onObjectBroke() -> void:
 	has_turned = true
 
 func restartGame():
+	if restarting:
+		return
+	restarting = true
+	call_deferred("changeScene")
+
+func changeScene():
 	get_tree().change_scene_to_file("res://Scene/Retry.tscn")
 
 func _ready() -> void:
@@ -74,7 +81,20 @@ func _ready() -> void:
 	spine.active = true
 
 func _process(delta: float) -> void:
+	if creature_is_visible:
+		return
+	if restarting:
+		return
+	
 	if has_turned:
 		turnAndCheck(delta)
 	else:
 		turnBackToNormal(delta)
+	
+	var creature_position = creature.global_transform.origin
+	var eye_position = eye.global_transform.origin
+	var creature_direction = (creature_position - eye_position).normalized()
+	var man_forward_direction: Vector3 = eye.transform.basis.z.normalized()
+	var angle = creature_direction.dot(man_forward_direction)
+	if angle >= 0.3:
+		has_turned = true
