@@ -27,5 +27,7 @@ script = ExtResource("2_u2ity")
 cache_is_saved = true
 cache_name = "8248333786208"
 original_mesh = ExtResource("1_w2uwf")
+chunk_brush = ExtResource("1_w2uwf")
 chunk_inner_material = SubResource("StandardMaterial3D_dlx4k")
+phys_shape = 4
 metadata/_custom_type_script = "uid://didj56d251v1j"

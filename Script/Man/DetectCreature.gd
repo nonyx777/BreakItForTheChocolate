@@ -4,12 +4,13 @@ extends Node3D
 @onready var head: LookAtModifier3D = $Skeleton3D/HeadLookAt
 # Influence from 0 -> 0.4
 @onready var spine: LookAtModifier3D = $Skeleton3D/SpineLookAt
+@onready var Creature = get_parent().get_node("Creature")
+@onready var creature: Node3D = Creature.get_node("CharacterBody3D")
+@onready var sight1: Node3D = Creature.get_node("CharacterBody3D/SightTarget1")
+@onready var sight2: Node3D = Creature.get_node("CharacterBody3D/SightTarget2")
+@onready var sight3: Node3D = Creature.get_node("CharacterBody3D/SightTarget3")
 
-@export var creature: Node3D
 @export var eye: Node3D
-@export var sight1: Node3D
-@export var sight2: Node3D
-@export var sight3: Node3D
 @export var max_head_influence: float = 1.0
 @export var max_spine_influence: float = 0.4
 @export var turn_speed_towards_creature: float = 4.0
@@ -17,7 +18,6 @@ extends Node3D
 @export var time_until_turn_back: float = 3.0
 
 signal object_broken()
-signal creature_not_in_sight()
 var creature_is_visible: bool = false
 var has_turned: bool = false
 
@@ -27,8 +27,7 @@ func isCreatureVisible(target: Node3D) -> bool:
 	var target_pos = target.global_transform.origin
 	var params = PhysicsRayQueryParameters3D.create(
 		origin,
-		target_pos,
-		1
+		target_pos
 	)
 	var result = space_state.intersect_ray(params)
 	if result:
@@ -64,13 +63,16 @@ func onObjectBroke() -> void:
 
 func _ready() -> void:
 	object_broken.connect(onObjectBroke)
+	head.target_node = creature.get_path()
+	spine.target_node = creature.get_path()
+	
 	head.influence = 0.0
 	spine.influence = 0.0
 	head.active = true
 	spine.active = true
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("Jump"):
+	if Input.is_action_just_pressed("Temporary"):
 		object_broken.emit()
 	if has_turned:
 		turnAndCheck(delta)

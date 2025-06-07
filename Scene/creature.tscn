@@ -1,44 +1,24 @@
-[gd_scene load_steps=14 format=3 uid="uid://dnmjobri3cbls"]
+[gd_scene load_steps=6 format=3 uid="uid://dnmjobri3cbls"]
 
 [ext_resource type="Script" uid="uid://dyviamaunmpfv" path="res://Script/Character/CharacterMovement.gd" id="1_g76dh"]
-[ext_resource type="PackedScene" uid="uid://d1tsvj4p84e7a" path="res://Scene/bottle.tscn" id="2_7gdwu"]
-[ext_resource type="PackedScene" uid="uid://nvb476gndsav" path="res://Scene/vase.tscn" id="3_fcvaw"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vga3i"]
+radius = 0.2
+height = 0.7
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_g76dh"]
+radius = 0.2
+height = 0.7
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pq5cv"]
 albedo_color = Color(0.992754, 0, 0.109375, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_7gdwu"]
 material = SubResource("StandardMaterial3D_pq5cv")
-size = Vector3(0.5, 0.2, 0.5)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_g76dh"]
-size = Vector3(20, 1, 20)
-
-[sub_resource type="BoxMesh" id="BoxMesh_g76dh"]
-size = Vector3(20, 1, 20)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_7gdwu"]
-size = Vector3(3, 2, 2)
-
-[sub_resource type="BoxMesh" id="BoxMesh_fcvaw"]
-size = Vector3(3, 2, 2)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_fcvaw"]
-size = Vector3(3, 1, 2)
-
-[sub_resource type="BoxMesh" id="BoxMesh_xe3iw"]
-size = Vector3(3, 1, 2)
+size = Vector3(0.167, 0.067, 0.167)
 
 [node name="Creature" type="Node3D"]
 script = ExtResource("1_g76dh")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
-shadow_enabled = true
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
 collision_mask = 5
@@ -50,42 +30,13 @@ shape = SubResource("CapsuleShape3D_vga3i")
 mesh = SubResource("CapsuleMesh_g76dh")
 
 [node name="Eyes" type="MeshInstance3D" parent="CharacterBody3D/Body"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.555055, 0.32542)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.183236, 0.124505)
 mesh = SubResource("BoxMesh_7gdwu")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.735541, -0.345353, 0.582848, 0, 0.860317, 0.50976, -0.677481, -0.374949, 0.632798, 9.31629, 8.14805, 10.1147)
+[node name="SightTarget1" type="Node3D" parent="CharacterBody3D"]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.56936, 0)
-collision_layer = 5
+[node name="SightTarget2" type="Node3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0984169, 0.0909723, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-shape = SubResource("BoxShape3D_g76dh")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
-mesh = SubResource("BoxMesh_g76dh")
-
-[node name="Bottle" parent="." instance=ExtResource("2_7gdwu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.900486, 1.57761, 3.93314)
-
-[node name="Table" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00630999, -0.102964, 3.57593)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Table"]
-shape = SubResource("BoxShape3D_7gdwu")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Table"]
-mesh = SubResource("BoxMesh_fcvaw")
-
-[node name="Table2" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00630999, -0.54914, 5.68625)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Table2"]
-shape = SubResource("BoxShape3D_fcvaw")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Table2"]
-mesh = SubResource("BoxMesh_xe3iw")
-
-[node name="Vase" parent="." instance=ExtResource("3_fcvaw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.830885, 1.3722, 3.57328)
+[node name="SightTarget3" type="Node3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0756376, -0.16603, 0)

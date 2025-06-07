@@ -1,6 +1,7 @@
 extends RigidBody3D
 
 @onready var stm_instance = $STMCachedInstance3D
+@onready var collisionShape = $CollisionShape3D
 
 var smash_once: bool = true
 
@@ -16,7 +17,7 @@ func smash() -> void:
 	# Apply an "explode" impulse to each fragment/chunk
 	# Define a callback to apply an impulse to a rigid body chunk
 	var explode_callback = func(rb: RigidBody3D, _from):
-		rb.call_deferred("apply_impulse", -rb.position.normalized() * Vector3(1, -1, 1) * 3.0)
+		rb.call_deferred("apply_impulse", -rb.position.normalized() * Vector3(1, -1, 1) * 5.0)
 	# Apply the callback to each chunk of the mesh
 	stm_instance.chunks_iterate(explode_callback)
 

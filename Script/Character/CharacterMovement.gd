@@ -1,6 +1,6 @@
 extends Node3D
 @onready var characterBody: CharacterBody3D = $CharacterBody3D
-@onready var camera: Camera3D = $Camera3D
+@onready var camera: Camera3D = $"../Camera3D"
 
 # Both inputs and directions in WASD order
 var inputs: NDArray = nd.zeros([4, 1])
@@ -8,7 +8,7 @@ var directions: NDArray = nd.array([[0, 0, 1], [-1, 0, 0], [0, 0, -1], [1, 0, 0]
 var key_direction: Vector3
 
 # Linear Movement
-@export var force: float = 30
+@export var force: float = 20
 @export var gravity: float = 13
 @export var jump_velocity: float = 5 
 var acceleration: Vector3
@@ -16,7 +16,7 @@ var prev_acceleration: Vector3
 var velocity: Vector3
 var force_vec: Vector3
 var drag: float = 0.9
-var snappiness: float = 3.0
+var snappiness: float = 5.0
 var target_angle: float
 var desired_rotation1: Quaternion
 var desired_rotation2: Quaternion

@@ -1,6 +1,5 @@
-[gd_scene load_steps=28 format=3 uid="uid://bvgn4bekndct3"]
+[gd_scene load_steps=31 format=3 uid="uid://bvgn4bekndct3"]
 
-[ext_resource type="PackedScene" uid="uid://fqt80yg3gt7" path="res://Model/Sitting Idle.fbx" id="1_wf5b4"]
 [ext_resource type="ArrayMesh" uid="uid://cw4lceex74ghq" path="res://Model/Door/door_main.res" id="2_hl2wn"]
 [ext_resource type="ArrayMesh" uid="uid://cpunqnkefu5db" path="res://Model/Sofa/sofa.res" id="3_uphb1"]
 [ext_resource type="ArrayMesh" uid="uid://1kfhwsv58xg3" path="res://Model/NightStand/NightStand.res" id="4_1nji3"]
@@ -11,6 +10,10 @@
 [ext_resource type="Material" uid="uid://brnrqc6sie6wr" path="res://Material/FloorMaterial.tres" id="9_44gdo"]
 [ext_resource type="PackedScene" uid="uid://s2x48dejk4ba" path="res://Model/TV/model.tscn" id="9_du5de"]
 [ext_resource type="Material" uid="uid://3jj0u8d4u775" path="res://Material/WallMaterial.tres" id="10_vitcg"]
+[ext_resource type="PackedScene" uid="uid://d1tsvj4p84e7a" path="res://Scene/bottle.tscn" id="12_kiqjd"]
+[ext_resource type="PackedScene" uid="uid://nvb476gndsav" path="res://Scene/vase.tscn" id="13_pbccy"]
+[ext_resource type="PackedScene" uid="uid://ddbfrxnfs42bk" path="res://Scene/Sitting Idle.tscn" id="14_jvgng"]
+[ext_resource type="PackedScene" uid="uid://dnmjobri3cbls" path="res://Scene/creature.tscn" id="14_pbccy"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_du5de"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -29,7 +32,7 @@ glow_enabled = true
 size = Vector3(1.44, 3.05, 0.22)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1nji3"]
-size = Vector3(1.77, 1, 1.6)
+size = Vector3(1.425, 0.835, 1.385)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gdjtg"]
 size = Vector3(0.848, 0.67, 0.668)
@@ -73,9 +76,6 @@ size = Vector2(4, 4)
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_44gdo")
 
-[node name="Sitting Idle" parent="." instance=ExtResource("1_wf5b4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0119529, 0.00209167, 2.54958)
-
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.707107, -0.331967, 0.624338, 0, 0.882948, 0.469472, -0.707107, -0.331967, 0.624338, 27.2956, 22.7894, 27.2956)
 projection = 1
@@ -84,7 +84,7 @@ size = 13.4
 [node name="Static Objects" type="Node3D" parent="."]
 
 [node name="Door" type="StaticBody3D" parent="Static Objects"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.53469, 1.49386, -4.90419)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.65801, 1.47158, -4.93248)
 
 [node name="DoorMesh" type="MeshInstance3D" parent="Static Objects/Door"]
 transform = Transform3D(100, 0, 0, 0, -4.37114e-06, -100, 0, 100, -4.37114e-06, 0.67, 0.145, 0)
@@ -156,7 +156,7 @@ transform = Transform3D(150, 0, 0, 0, -6.55671e-06, 150, 0, -150, -6.55671e-06, 
 mesh = ExtResource("5_gdjtg")
 
 [node name="Stool4" type="StaticBody3D" parent="Static Objects"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0141981, 0.448595, -1.72093)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0141981, 0.448595, -1.98985)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Static Objects/Stool4"]
 shape = SubResource("BoxShape3D_0c3fy")
@@ -176,7 +176,7 @@ transform = Transform3D(170, 0, 0, 0, -7.43094e-06, 170, 0, -170, -7.43094e-06, 
 mesh = ExtResource("6_0c3fy")
 
 [node name="Desk2" type="StaticBody3D" parent="Static Objects"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0413132, 0.795947, -3.44595)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0413132, 0.795947, -4.10582)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Static Objects/Desk2"]
 shape = SubResource("BoxShape3D_ele34")
@@ -192,6 +192,16 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.3
 shape = SubResource("BoxShape3D_ktxfw")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Static Objects/Table"]
+transform = Transform3D(80, 0, 0, 0, -3.49691e-06, 80, 0, -80, -3.49691e-06, 0, -0.38, 0)
+mesh = ExtResource("7_ele34")
+
+[node name="Table2" type="StaticBody3D" parent="Static Objects"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.99916, 0.394002, -3.1175)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Static Objects/Table2"]
+shape = SubResource("BoxShape3D_ktxfw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Static Objects/Table2"]
 transform = Transform3D(80, 0, 0, 0, -3.49691e-06, 80, 0, -80, -3.49691e-06, 0, -0.38, 0)
 mesh = ExtResource("7_ele34")
 
@@ -237,70 +247,94 @@ shape = SubResource("BoxShape3D_lcyxa")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 mesh = SubResource("BoxMesh_44gdo")
 
-[node name="Mat" type="MeshInstance3D" parent="."]
+[node name="Mat" type="MeshInstance3D" parent="Static Objects"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.035, 2.548)
 mesh = SubResource("PlaneMesh_ktxfw")
+skeleton = NodePath("../..")
 
-[node name="CurtainPivot" type="Node3D" parent="."]
+[node name="CurtainPivot" type="Node3D" parent="Static Objects"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4.52588, 1.84668, 0.77965)
 
-[node name="Curtain" type="MeshInstance3D" parent="CurtainPivot"]
+[node name="Curtain" type="MeshInstance3D" parent="Static Objects/CurtainPivot"]
 transform = Transform3D(0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, 0.357612, -2.2623, 0)
 mesh = ExtResource("8_ktxfw")
-skeleton = NodePath("../..")
+skeleton = NodePath("../../..")
+
+[node name="BreakableObjects" type="Node3D" parent="."]
+
+[node name="Bottle" parent="BreakableObjects" instance=ExtResource("12_kiqjd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.028337, 1.23543, 0.0416341)
+
+[node name="Bottle2" parent="BreakableObjects" instance=ExtResource("12_kiqjd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.81665, 2.11374, 1.09678)
+
+[node name="Bottle3" parent="BreakableObjects" instance=ExtResource("12_kiqjd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.99519, 2.11374, 0.514184)
+
+[node name="Bottle4" parent="BreakableObjects" instance=ExtResource("12_kiqjd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.975272, 2.09875, -3.89736)
+
+[node name="Bottle5" parent="BreakableObjects" instance=ExtResource("12_kiqjd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.042566, 2.09875, -4.62011)
+
+[node name="Vase" parent="BreakableObjects" instance=ExtResource("13_pbccy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.579794, 1.14132, 0.12052)
+
+[node name="Vase2" parent="BreakableObjects" instance=ExtResource("13_pbccy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.75538, 2.01963, -0.431788)
+
+[node name="Vase3" parent="BreakableObjects" instance=ExtResource("13_pbccy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.82945, 2.00464, -3.76885)
+
+[node name="Vase4" parent="BreakableObjects" instance=ExtResource("13_pbccy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.70068, 1.1452, -2.46381)
 
 [node name="Lights" type="Node3D" parent="."]
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.57044, 0)
 light_energy = 3.37
-light_bake_mode = 1
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0363352, 3.57044, 2.71251)
 light_energy = 2.647
-light_bake_mode = 1
 
 [node name="OmniLight3D3" type="OmniLight3D" parent="Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0363352, 2.7732, -2.96118)
 light_energy = 3.178
-light_bake_mode = 1
-shadow_enabled = true
 
 [node name="OmniLight3D4" type="OmniLight3D" parent="Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.66444, 3.57044, 0)
 light_energy = 3.095
-light_bake_mode = 1
 shadow_enabled = true
 
 [node name="OmniLight3D5" type="OmniLight3D" parent="Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2463, 3.57044, 3.72174)
 light_energy = 4.482
-light_bake_mode = 1
-shadow_enabled = true
 
 [node name="OmniLight3D6" type="OmniLight3D" parent="Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.34341, 2.7732, -3.21668)
 light_energy = 3.178
-light_bake_mode = 1
 
 [node name="OmniLight3D7" type="OmniLight3D" parent="Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.75075, 3.57044, 0)
 light_energy = 5.173
-light_bake_mode = 1
 
 [node name="OmniLight3D8" type="OmniLight3D" parent="Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.78709, 3.57044, 2.71251)
 light_energy = 3.609
-light_bake_mode = 1
 
 [node name="OmniLight3D9" type="OmniLight3D" parent="Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.78709, 2.7732, -2.96118)
 light_energy = 3.178
-light_bake_mode = 1
-shadow_enabled = true
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.15377, 4.08938)
 light_color = Color(0, 0.871686, 0.900166, 1)
 light_energy = 5.691
+
+[node name="Creature" parent="." instance=ExtResource("14_pbccy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.95658, 0.364688, 4.33805)
+
+[node name="Sitting Idle" parent="." instance=ExtResource("14_jvgng")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0282432, 0, 2.5373)
