@@ -1,6 +1,7 @@
 extends Area3D
 
 @onready var signalManager = get_parent().get_parent().get_node("SignalManager")
+@onready var chocolateMesh = $Chocolate
 var able_to_take_chocolate: bool = false
 
 func ableToTakeChocolate():
@@ -12,4 +13,5 @@ func _ready():
 func _on_body_entered(body: Node3D) -> void:
 	signalManager.disconnect("all_object_broken", ableToTakeChocolate)
 	if able_to_take_chocolate:
+		chocolateMesh.queue_free()
 		print("You took the chocolate!")
