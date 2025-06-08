@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://bvgn4bekndct3"]
+[gd_scene load_steps=43 format=3 uid="uid://bvgn4bekndct3"]
 
 [ext_resource type="ArrayMesh" uid="uid://cw4lceex74ghq" path="res://Model/Door/door_main.res" id="2_hl2wn"]
 [ext_resource type="ArrayMesh" uid="uid://cpunqnkefu5db" path="res://Model/Sofa/sofa.res" id="3_uphb1"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://dt7t1bpbo6aal" path="res://Scene/vase2.tscn" id="19_ko103"]
 [ext_resource type="PackedScene" uid="uid://bgm18pe1vlg7k" path="res://Scene/longvase.tscn" id="20_rta4t"]
 [ext_resource type="PackedScene" uid="uid://dy2gwbkakpr54" path="res://Scene/chocolate.tscn" id="21_v3ctx"]
+[ext_resource type="FontFile" uid="uid://blebthe1oril" path="res://Font/Smashers.ttf" id="22_q4s8i"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_du5de"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -139,6 +140,17 @@ _data = {
 &"RESET": SubResource("Animation_2wob0"),
 &"flicker": SubResource("Animation_jvgng")
 }
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ae2fx"]
+content_margin_left = 24.0
+content_margin_right = 24.0
+bg_color = Color(0.886275, 0.886275, 0.886275, 1)
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0.851675, 0.465616, 0.293926, 0.6)
+shadow_size = 6
 
 [node name="LivingRoom" type="Node3D"]
 
@@ -447,4 +459,21 @@ signalManager = NodePath("../SignalManager")
 script = ExtResource("15_jvgng")
 
 [node name="Chocolate" parent="." instance=ExtResource("21_v3ctx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.947507, 0.438128, 4.62082)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.947507, 0.438128, 4.62082)
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.955001, 0.723766, 0.542375, 1)
+theme_override_fonts/font = ExtResource("22_q4s8i")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_ae2fx")
+text = "You Win!
+Stay Around If You Want"
+horizontal_alignment = 1
