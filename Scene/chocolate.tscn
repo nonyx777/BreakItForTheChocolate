@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://dy2gwbkakpr54"]
+
+[ext_resource type="ArrayMesh" uid="uid://chwad0ejdo27x" path="res://Model/Chocolate/chocolate.res" id="1_87txy"]
+[ext_resource type="Script" uid="uid://bw7bba0sfbdkg" path="res://Script/chocolate.gd" id="1_tarkb"]
+[ext_resource type="ArrayMesh" uid="uid://1kfhwsv58xg3" path="res://Model/NightStand/NightStand.res" id="2_tarkb"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ux6nh"]
+size = Vector3(0.91, 0.56, 0.91)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6s85f"]
+size = Vector3(0.78, 0.56, 0.615)
+
+[node name="Chocolate" type="Node3D"]
+
+[node name="Chocolate" type="Area3D" parent="."]
+collision_mask = 8
+script = ExtResource("1_tarkb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Chocolate"]
+shape = SubResource("BoxShape3D_ux6nh")
+
+[node name="Chocolate" type="MeshInstance3D" parent="Chocolate"]
+transform = Transform3D(0.755533, 0, -0.65511, 0, 1, 0, 0.65511, 0, 0.755533, 0, 0.308895, 0)
+mesh = ExtResource("1_87txy")
+
+[node name="NightStand" type="MeshInstance3D" parent="Chocolate"]
+transform = Transform3D(150, 0, 0, 0, -6.55671e-06, 150, 0, -150, -6.55671e-06, -0.000132561, -0.442401, -0.0089016)
+mesh = ExtResource("2_tarkb")
+skeleton = NodePath("")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Chocolate"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.486274, 0)
+light_color = Color(0.870388, 0.464276, 0.249763, 1)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_6s85f")
+
+[connection signal="body_entered" from="Chocolate" to="Chocolate" method="_on_body_entered"]
