@@ -58,8 +58,11 @@ func turnBackToNormal(delta: float) -> void:
 	head.influence = lerp(head.influence, 0.0, weight)
 	spine.influence = lerp(spine.influence, 0.0, weight)
 
-func onObjectBroke() -> void:
+func onObjectBroken() -> void:
 	has_turned = true
+
+func onAllObjectBroken() -> void:
+	queue_free()
 
 func restartGame():
 	if restarting:
@@ -68,11 +71,13 @@ func restartGame():
 	call_deferred("changeScene")
 
 func changeScene():
-	signalManager.disconnect("object_broken", onObjectBroke)
+	signalManager.disconnect("object_broken", onObjectBroken)
+	signalManager.disconnect("all_object_broken", onAllObjectBroken)
 	get_tree().change_scene_to_file("res://Scene/Retry.tscn")
 
 func _ready() -> void:
-	signalManager.connect("object_broken", onObjectBroke)
+	signalManager.connect("object_broken", onObjectBroken)
+	signalManager.connect("all_object_broken", onAllObjectBroken)
 	head.target_node = creature.get_path()
 	spine.target_node = creature.get_path()
 	

@@ -7,7 +7,6 @@ extends RigidBody3D
 var smash_once: bool = true
 
 func _ready():
-	print()
 	contact_monitor = true
 	max_contacts_reported = 50
 
@@ -23,6 +22,9 @@ func smash() -> void:
 	# Apply the callback to each chunk of the mesh
 	stm_instance.chunks_iterate(explode_callback)
 	signalManager.emit_signal("object_broken")
+	signalManager.smashed_objects += 1
+	if signalManager.smashed_objects == 9: # Should make it dynamic
+		signalManager.emit_signal("all_object_broken")
 
 func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	for i in state.get_contact_count():
