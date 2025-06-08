@@ -68,6 +68,7 @@ func restartGame():
 	call_deferred("changeScene")
 
 func changeScene():
+	signalManager.disconnect("object_broken", onObjectBroke)
 	get_tree().change_scene_to_file("res://Scene/Retry.tscn")
 
 func _ready() -> void:
