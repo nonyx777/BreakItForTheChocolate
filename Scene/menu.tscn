@@ -92,16 +92,32 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -194.0
-offset_top = -23.0
+offset_top = -299.0
 offset_right = 194.0
+offset_bottom = -262.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0.98878, 0.863157, 0.801847, 1)
 theme_override_fonts/font = ExtResource("2_eas8t")
-text = "Smash every smashable object and scare the man
+text = "Smash every smashable object and scare the man out of the living room 
 to get your chocolate"
 horizontal_alignment = 1
+
+[node name="Hint2" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 39.0
+offset_top = -37.0
+offset_right = 165.0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.98878, 0.863157, 0.801847, 1)
+theme_override_fonts/font = ExtResource("2_eas8t")
+text = "\"W-A-S-D\" for Movement
+Space for  Jump"
 
 [node name="Title" type="Label" parent="."]
 layout_mode = 1
@@ -109,14 +125,14 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -192.5
-offset_top = 132.0
+offset_top = 222.0
 offset_right = 192.5
-offset_bottom = 181.0
+offset_bottom = 271.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0.98878, 0.863157, 0.801847, 1)
 theme_override_fonts/font = ExtResource("2_eas8t")
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 50
 text = "Break It For A Chocolate"
 horizontal_alignment = 1
 
