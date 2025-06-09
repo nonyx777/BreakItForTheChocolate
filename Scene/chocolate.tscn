@@ -1,11 +1,27 @@
-[gd_scene load_steps=9 format=3 uid="uid://dy2gwbkakpr54"]
+[gd_scene load_steps=10 format=3 uid="uid://dy2gwbkakpr54"]
 
 [ext_resource type="ArrayMesh" uid="uid://chwad0ejdo27x" path="res://Model/Chocolate/chocolate.res" id="1_87txy"]
 [ext_resource type="Script" uid="uid://bw7bba0sfbdkg" path="res://Script/chocolate.gd" id="1_tarkb"]
 [ext_resource type="ArrayMesh" uid="uid://1kfhwsv58xg3" path="res://Model/NightStand/NightStand.res" id="2_tarkb"]
+[ext_resource type="AudioStream" uid="uid://bvgwbwbgu3h5p" path="res://SFX/youwin.mp3" id="4_ux6nh"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ux6nh"]
 size = Vector3(0.91, 0.56, 0.91)
+
+[sub_resource type="Animation" id="Animation_ux6nh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
 
 [sub_resource type="Animation" id="Animation_tarkb"]
 resource_name = "pulsing"
@@ -22,21 +38,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [1.0, 0.0, 1.0]
-}
-
-[sub_resource type="Animation" id="Animation_ux6nh"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:light_energy")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [1.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6s85f"]
@@ -81,5 +82,9 @@ autoplay = "pulsing"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("BoxShape3D_6s85f")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_ux6nh")
+volume_db = -16.0
 
 [connection signal="body_entered" from="Chocolate" to="Chocolate" method="_on_body_entered"]
