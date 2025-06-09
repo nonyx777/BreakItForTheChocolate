@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://br6yjdlgki8ag"]
+[gd_scene load_steps=8 format=3 uid="uid://br6yjdlgki8ag"]
 
 [ext_resource type="Script" uid="uid://beamsissw7bj2" path="res://Script/DestructibleObjects/smashObject.gd" id="1_amt6e"]
 [ext_resource type="Script" uid="uid://didj56d251v1j" path="res://addons/smash_the_mesh/stm_cached_instance.gd" id="2_c1ib6"]
 [ext_resource type="ArrayMesh" uid="uid://dfeit8plbffti" path="res://Model/JamJar/JamJar.res" id="2_esox6"]
 [ext_resource type="ArrayMesh" uid="uid://b65xcga55m6fu" path="res://Model/Vase/Vase.res" id="3_esox6"]
+[ext_resource type="AudioStream" uid="uid://c66kn8ygsxl1f" path="res://SFX/jar-smash-46764.mp3" id="5_esox6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_u2ity"]
 size = Vector3(0.385, 0.44, 0.385)
@@ -14,7 +15,7 @@ albedo_color = Color(0.229853, 0.105638, 0.00249219, 1)
 [node name="JamJar" type="Node3D"]
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
-collision_layer = 2
+collision_layer = 18
 collision_mask = 7
 script = ExtResource("1_amt6e")
 
@@ -25,9 +26,15 @@ shape = SubResource("BoxShape3D_u2ity")
 mesh = ExtResource("2_esox6")
 skeleton = NodePath("../..")
 script = ExtResource("2_c1ib6")
+cache_is_saved = true
 cache_name = "8248333786209"
 original_mesh = ExtResource("2_esox6")
 chunk_brush = ExtResource("3_esox6")
 chunk_inner_material = SubResource("StandardMaterial3D_dlx4k")
 phys_shape = 4
 metadata/_custom_type_script = "uid://didj56d251v1j"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_esox6")
+volume_db = -16.0
+pitch_scale = 1.31

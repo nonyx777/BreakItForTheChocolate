@@ -388,8 +388,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.132392, 0.906676, 0.0634289
 [node name="GlassJar" parent="BreakableObjects" instance=ExtResource("18_uo1dq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0261392, 1.92636, -4.48533)
 
+[node name="GlassJar2" parent="BreakableObjects" instance=ExtResource("18_uo1dq")]
+transform = Transform3D(1, 0, 0, 0, 0.0434799, 0.999054, 0, -0.999054, 0.0434799, 0.812815, 0.939724, -0.308648)
+
 [node name="Vase3" parent="BreakableObjects" instance=ExtResource("19_ko103")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.761663, 1.91737, -3.83297)
+
+[node name="Vase4" parent="BreakableObjects" instance=ExtResource("19_ko103")]
+transform = Transform3D(0.598213, 0.800278, 0.0411845, 0, -0.0513947, 0.998678, 0.801337, -0.597422, -0.030745, -0.663017, 0.983258, -0.0625903)
 
 [node name="LongVase" parent="BreakableObjects" instance=ExtResource("20_rta4t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.88896, 1.28488, -3.31817)

@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dt7t1bpbo6aal"]
+[gd_scene load_steps=8 format=3 uid="uid://dt7t1bpbo6aal"]
 
 [ext_resource type="Script" uid="uid://beamsissw7bj2" path="res://Script/DestructibleObjects/smashObject.gd" id="1_kpgby"]
 [ext_resource type="ArrayMesh" uid="uid://tsomek7c33dt" path="res://Model/Vase2/vase2.res" id="2_kpgby"]
 [ext_resource type="Script" uid="uid://didj56d251v1j" path="res://addons/smash_the_mesh/stm_cached_instance.gd" id="3_mfbjj"]
 [ext_resource type="ArrayMesh" uid="uid://b65xcga55m6fu" path="res://Model/Vase/Vase.res" id="4_poiaa"]
+[ext_resource type="AudioStream" uid="uid://l6qep1pxwpim" path="res://SFX/wood-crate-destory-2-97263.mp3" id="5_0x5ae"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_u2ity"]
 size = Vector3(0.485, 0.655, 0.485)
@@ -14,7 +15,7 @@ albedo_color = Color(0.229853, 0.105638, 0.00249219, 1)
 [node name="Vase2" type="Node3D"]
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
-collision_layer = 2
+collision_layer = 18
 collision_mask = 7
 script = ExtResource("1_kpgby")
 
@@ -26,9 +27,15 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -0.
 mesh = ExtResource("2_kpgby")
 skeleton = NodePath("../..")
 script = ExtResource("3_mfbjj")
+cache_is_saved = true
 cache_name = "8248333786212"
 original_mesh = ExtResource("2_kpgby")
 chunk_brush = ExtResource("4_poiaa")
 chunk_inner_material = SubResource("StandardMaterial3D_dlx4k")
 phys_shape = 4
 metadata/_custom_type_script = "uid://didj56d251v1j"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_0x5ae")
+volume_db = -16.0
+pitch_scale = 1.22

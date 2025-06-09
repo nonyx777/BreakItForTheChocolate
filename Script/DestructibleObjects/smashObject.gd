@@ -3,6 +3,7 @@ extends RigidBody3D
 @onready var stm_instance = $STMCachedInstance3D
 @onready var collisionShape = $CollisionShape3D
 @onready var signalManager = get_parent().get_parent().get_parent().get_node("SignalManager")
+@onready var sfxPlayer = get_parent().get_node("AudioStreamPlayer")
 
 var smash_once: bool = true
 
@@ -23,7 +24,8 @@ func smash() -> void:
 	stm_instance.chunks_iterate(explode_callback)
 	signalManager.emit_signal("object_broken")
 	signalManager.smashed_objects += 1
-	if signalManager.smashed_objects == 9: # Should make it dynamic
+	sfxPlayer.play()
+	if signalManager.smashed_objects == 11: # Should make it dynamic
 		signalManager.emit_signal("all_object_broken")
 
 func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:

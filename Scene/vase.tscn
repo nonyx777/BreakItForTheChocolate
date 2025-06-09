@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://nvb476gndsav"]
+[gd_scene load_steps=7 format=3 uid="uid://nvb476gndsav"]
 
 [ext_resource type="Script" uid="uid://beamsissw7bj2" path="res://Script/DestructibleObjects/smashObject.gd" id="1_u2ity"]
 [ext_resource type="ArrayMesh" uid="uid://b65xcga55m6fu" path="res://Model/Vase/Vase.res" id="1_w2uwf"]
 [ext_resource type="Script" uid="uid://didj56d251v1j" path="res://addons/smash_the_mesh/stm_cached_instance.gd" id="2_u2ity"]
+[ext_resource type="AudioStream" uid="uid://l6qep1pxwpim" path="res://SFX/wood-crate-destory-2-97263.mp3" id="4_dlx4k"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_u2ity"]
 size = Vector3(0.74, 0.92, 0.74)
@@ -13,7 +14,7 @@ albedo_color = Color(0.229853, 0.105638, 0.00249219, 1)
 [node name="Vase" type="Node3D"]
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
-collision_layer = 2
+collision_layer = 18
 collision_mask = 7
 script = ExtResource("1_u2ity")
 
@@ -31,3 +32,7 @@ chunk_brush = ExtResource("1_w2uwf")
 chunk_inner_material = SubResource("StandardMaterial3D_dlx4k")
 phys_shape = 4
 metadata/_custom_type_script = "uid://didj56d251v1j"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_dlx4k")
+volume_db = -16.0
